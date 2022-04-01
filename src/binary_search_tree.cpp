@@ -76,9 +76,9 @@ namespace assignment {
 
   bool BinarySearchTree::remove(int key, Node*& node) {
     if (node->key < key) {
-      remove(key, node->right);
+      return remove(key, node->right);
     } else if (node->key > key) {
-      remove(key, node->left);
+      return remove(key, node->left);
     } else {
       if (node->left == nullptr & node->right == nullptr) {
         delete node;
@@ -95,7 +95,7 @@ namespace assignment {
         Node* insteadNode = find_min(node->right);
         node->key = insteadNode->key;
         node->value = insteadNode->value;
-        remove(node->key, node->right);
+        return remove(node->key, node->right);
       }
       return true;
     }
@@ -127,7 +127,7 @@ namespace assignment {
     } else if (node->left == nullptr) {
       return node;
     } else {
-      find_min(node->left);
+      return find_min(node->left);
     }
   }
 
@@ -137,7 +137,7 @@ namespace assignment {
     } else if (node->right == nullptr) {
       return node;
     } else {
-      find_max(node->right);
+      return find_max(node->right);
     }
   }
 

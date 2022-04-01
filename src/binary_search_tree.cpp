@@ -112,34 +112,33 @@ namespace assignment {
   Node* BinarySearchTree::find(int key, Node* node) const {
     if (node == nullptr) {
       return nullptr;
-    }
-    if (node->key == key) {
+    } else if (node->key == key) {
       return node;
-    }
-    if (node->key < key) {
+    } else if (node->key < key) {
       return find(key, node->right);
+    } else {
+      return find(key, node->left);
     }
-    return find(key, node->left);
   }
 
   Node* BinarySearchTree::find_min(Node* node) const {
     if (node == nullptr) {
       return nullptr;
-    }
-    if (node->left == nullptr) {
+    } else if (node->left == nullptr) {
       return node;
+    } else {
+      find_min(node->left);
     }
-    find_min(node->left);
   }
 
   Node* BinarySearchTree::find_max(Node* node) const {
     if (node == nullptr) {
       return nullptr;
-    }
-    if (node->right == nullptr) {
+    } else if (node->right == nullptr) {
       return node;
+    } else {
+      find_max(node->right);
     }
-    find_max(node->right);
   }
 
 }  // namespace assignment
